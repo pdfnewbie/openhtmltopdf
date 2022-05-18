@@ -54,6 +54,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
+import org.apache.pdfbox.pdmodel.font.PDType1Font;
 import org.apache.pdfbox.pdmodel.graphics.form.PDFormXObject;
 import org.apache.pdfbox.pdmodel.graphics.image.PDImageXObject;
 import org.apache.pdfbox.pdmodel.graphics.shading.PDShading;
@@ -383,7 +384,10 @@ public class PdfBoxFastOutputDevice extends AbstractOutputDevice implements Outp
     public void setFont(FSFont font) {
         _font = ((PdfBoxFSFont) font);
         if (_font.getFontDescription().isEmpty()) {
-            throw new FontNotFoundException(this.getFontSpecification());
+        	//TODO: temp fix, if empty set a default font instead of throw exception
+			FontDescription des = new FontDescription(PDType1Font.COURIER, IdentValue.NORMAL , _startPageNo);
+			_font.getFontDescription().add(des );
+//            throw new FontNotFoundException(this.getFontSpecification());
         }
     }
 
