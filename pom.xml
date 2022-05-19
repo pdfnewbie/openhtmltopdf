@@ -23,7 +23,7 @@
   <modules>
     <module>openhtmltopdf-core</module>
     <module>openhtmltopdf-slf4j</module>
-    <module>openhtmltopdf-examples</module>
+<!--     <module>openhtmltopdf-examples</module> -->
     <module>openhtmltopdf-pdfbox</module>
     <module>openhtmltopdf-rtl-support</module>
     <module>openhtmltopdf-svg-support</module>
